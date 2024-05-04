@@ -1,0 +1,361 @@
+@font-face {
+  font-family: Comfortaa;
+  src: url("Comfortaa-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: Mars;
+  src: url("Mars-Project.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #000000;
+}
+
+.video {
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  z-index: 1;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  font-family: Mars;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.line-wrapper {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  height: max-content;
+}
+
+.login:has(.earth:checked) ~ .line-wrapper .line,
+.login:has(.earth:checked) ~ .line-wrapper .circle {
+  background-color: rgb(75, 193, 255);
+}
+
+.login:has(.mars:checked) ~ .line-wrapper .line,
+.login:has(.mars:checked) ~ .line-wrapper .circle {
+  background-color: rgb(255, 95, 32);
+}
+
+.login:has(.venus:checked) ~ .line-wrapper .line,
+.login:has(.venus:checked) ~ .line-wrapper .circle {
+  background-color: rgb(213, 255, 75);
+}
+
+.line {
+  width: 100%;
+  height: 5px;
+  margin-left: -3px;
+  border-radius: 0 10px 10px 0;
+  background-color: #808080;
+  transition: 0.3s;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #808080;
+  transition: 0.3s;
+}
+
+.login {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  max-width: 500px;
+  min-height: 50dvh;
+  padding: 15px;
+  font-family: Comfortaa;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+}
+
+.login::after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.53);
+  transition: 0.3s;
+  border-radius: 15px;
+}
+
+.login:has(.earth:checked) > .inputs {
+  color: rgb(75, 193, 255);
+}
+
+.login:has(.venus:checked) .inputs {
+  color: rgb(213, 255, 75);
+}
+
+.login:has(.mars:checked) .inputs {
+  color: rgb(255, 95, 32);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.inputs-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.email,
+.password {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: Comfortaa;
+  font-size: 1.2rem;
+  color: #ffffff;
+  box-shadow: inset 0 0 5px 1px #ffffff, 0 0 5px 1px #ffffff;
+  transition: 0.3s;
+}
+
+.email::placeholder,
+.password::placeholder {
+  font-size: 1rem;
+  color: #c9c9c9;
+}
+
+.login:has(.earth:checked) .inputs .email,
+.login:has(.earth:checked) .password {
+  box-shadow: inset 0 0 5px 1px rgb(75, 193, 255), 0 0 5px 1px rgb(75, 193, 255);
+}
+
+.login:has(.mars:checked) .inputs .email,
+.login:has(.mars:checked) .inputs .password {
+  box-shadow: inset 0 0 5px 1px rgb(255, 95, 32), 0 0 5px 1px rgb(255, 95, 32);
+}
+
+.login:has(.venus:checked) .inputs .email,
+.login:has(.venus:checked) .inputs .password {
+  box-shadow: inset 0 0 5px 1px rgb(213, 255, 75), 0 0 5px 1px rgb(213, 255, 75);
+}
+
+.planets {
+  display: flex;
+  gap: 30px;
+  margin: 20px 0;
+  transform-style: preserve-3d;
+}
+
+.planet {
+  appearance: none;
+}
+
+.earth, .mars, .venus {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-image: url('earth.jpg');
+  box-shadow: inset 0 0 20px 1px rgba(0, 0, 0, 1),
+  0 0 30px 5px rgb(75, 193, 255);
+  animation-fill-mode: both;
+  filter: blur(1px) grayscale(100%);
+  animation: animateEarthAndMars 15s linear infinite reverse paused;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.mars {
+  box-shadow: inset 0 0 20px 1px rgba(0, 0, 0, 1),
+  0 0 30px 5px rgb(255, 95, 32);
+  background-image: url('mars.jpg');
+}
+
+.venus {
+  box-shadow: inset 0 0 20px 1px rgba(0, 0, 0, 1),
+  0 0 30px 5px rgb(213, 255, 75);
+  background-image: url('venus.jpg');
+  animation: animateVenus 15s linear infinite reverse paused;
+}
+
+.earth:hover,
+.mars:hover,
+.venus:hover,
+.earth:checked,
+.mars:checked,
+.venus:checked {
+  animation-play-state: running;
+  filter: blur(0px) grayscale(0);
+}
+
+.earth:checked,
+.mars:checked,
+.venus:checked {
+  transform: scale(1.1);
+}
+
+.submit {
+  overflow: hidden;
+  opacity: 0.6;
+  padding: 5px 10px;
+  font-size: 1.6rem;
+  outline: 1px solid #ffffff;
+  color: #ffffff;
+  border: none;
+  background-color: transparent;
+  cursor: default;
+  transition: 0.3s;
+}
+
+.submit span {
+  display: inline-block;
+}
+
+.login:valid > .submit {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.login:valid > .planets:has(.earth:checked) ~ .submit {
+  color: rgb(75, 193, 255);
+  outline: 1px solid rgb(75, 193, 255);
+  box-shadow: 0 0 10px 1px rgb(75, 193, 255), inset 0 0 10px 1px rgb(75, 193, 255);
+}
+
+.login:valid > .planets:has(.venus:checked) ~ .submit {
+  color: rgb(213, 255, 75);
+  outline: 1px solid rgb(213, 255, 75);
+  box-shadow: 0 0 10px 1px rgb(213, 255, 75), inset 0 0 10px 1px rgb(213, 255, 75);
+}
+
+.login:valid > .planets:has(.mars:checked) ~ .submit {
+  color: rgb(255, 95, 32);
+  outline: 1px solid rgb(255, 95, 32);
+  box-shadow: 0 0 10px 1px rgb(255, 95, 32), inset 0 0 10px 1px rgb(255, 95, 32);
+}
+
+.login:valid .submit:hover :nth-child(1) {
+  animation: firstLetter 0.5s;
+}
+
+.login:valid .submit:hover :nth-child(2) {
+  animation: secondLetter 0.5s 0.1s;
+}
+
+.login:valid .submit:hover :nth-child(3) {
+  animation: thirdLetter 0.5s 0.2s;
+}
+
+.login:valid .submit:hover :nth-child(4) {
+  animation: fourthLetter 0.5s 0.3s;
+}
+
+.login:valid .submit:hover :nth-child(5) {
+  animation: fifthLetter 0.5s 0.4s;
+}
+
+@keyframes animateEarthAndMars {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200px 0;
+  }
+}
+
+@keyframes animateVenus {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+@keyframes firstLetter {
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes secondLetter {
+  50% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes thirdLetter {
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fourthLetter {
+  50% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fifthLetter {
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

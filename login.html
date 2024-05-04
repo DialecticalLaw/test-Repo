@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <video class="video" src="space-footage.webm" loop autoplay muted></video>
+    <h1 class="title">Welcome To The Future</h1>
+    <form class="login">
+      <div class="inputs">
+        <label class="inputs-label">Type your email
+          <input class="email" type="email" placeholder="task.sloths@gmail.com" required>
+        </label>
+        <label class="inputs-label">Type your password
+          <input class="password" type="password" placeholder="veryDifficultPassword" required>
+        </label>
+      </div>
+      <div class="planets">
+        <input required type="radio" class="venus planet" name="planet" value="venus">
+        <input required type="radio" class="earth planet" name="planet" value="earth">
+        <input required type="radio" class="mars planet" name="planet" value="mars">
+      </div>
+      <button class="submit">
+        <span>L</span>
+        <span>o</span>
+        <span>g</span>
+        <span>i</span>
+        <span>n</span>
+      </button>
+    </form>
+    <div class="line-wrapper">
+      <div class="circle"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
